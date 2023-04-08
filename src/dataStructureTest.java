@@ -1,4 +1,5 @@
 import dataStructures.DynamicArrayList;
+import dataStructures.OrderedArrayList;
 import dataStructures.SinglyLinkedListWithTail;
 import dataStructures.StaticArrayList;
 
@@ -20,7 +21,7 @@ public class dataStructureTest {
         listWithTail.erase(2);
         listWithTail.print();*/
 
-        StaticArrayList<Integer> staticList = new StaticArrayList<Integer>(4);
+/*        StaticArrayList<Integer> staticList = new StaticArrayList<Integer>(4);
         staticList.pushFront(1);
         staticList.pushFront(2);
         staticList.pushFront(3);
@@ -28,7 +29,7 @@ public class dataStructureTest {
         staticList.print();
         staticList.popFront();
         staticList.popFront();
-        staticList.print();
+        staticList.print();*/
 
 /*
        DynamicArrayList dynamicList = new DynamicArrayList();
@@ -38,5 +39,21 @@ public class dataStructureTest {
        dynamicList.pushBack(7);
        dynamicList.pushBack(4);
        dynamicList.print();*/
+
+        OrderedArrayList<Integer> orderedList = new OrderedArrayList<Integer>(4);
+        orderedList.insert(7);
+        orderedList.print();
+        orderedList.insert(1);
+        orderedList.print();
+        orderedList.insert(4);
+        orderedList.print();
+        orderedList.insert(2);
+        orderedList.print();
+        orderedList.insert(3);
+        orderedList.print();
+        orderedList.delete(2);
+        orderedList.print();
+
+
     }
 }
