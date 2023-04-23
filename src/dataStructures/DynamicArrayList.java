@@ -91,7 +91,7 @@ public class DynamicArrayList<T> {
     }
 
     public int length(){
-        return list.length;
+        return size;
     }
 
     public T find(int idx){
