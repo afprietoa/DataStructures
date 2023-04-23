@@ -43,8 +43,7 @@ public class DevSelection {
                 for (int k=0; k<workers.length();k++){
 
                     for (int t=0; t<skills.length();t++) {
-                        if (workers.find(k).equals(skills.find(t)))
-                            satisfyCondition += 1;
+                            satisfyCondition += (workers.find(k).equals(skills.find(t))) ? 1: 0;
                     }
                 }
             }
