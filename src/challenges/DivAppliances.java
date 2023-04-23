@@ -45,10 +45,17 @@ public class DivAppliances {
                     }else{
                         article = articles.dequeue();
                         charChain += (j==qtyArtsStore-1) ? (article + "]")
+                                : (articles.empty())
+                                ? article
                                 : (article + " ");
                     }
                 }
-                charChain += (qtyArtsStore==0) ? "]" : "\n";
+                if (qtyArtsStore==0){
+                    charChain +="]";
+                }
+                if(i!=qtyCases || k!=qtyStores){
+                    charChain +="\n";
+                }
 
             }
 

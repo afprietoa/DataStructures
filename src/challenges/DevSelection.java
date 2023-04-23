@@ -52,7 +52,7 @@ public class DevSelection {
 
         }
 
-        System.out.println(skilledWorkers);
+        System.out.print(skilledWorkers);
     }
 
 }
