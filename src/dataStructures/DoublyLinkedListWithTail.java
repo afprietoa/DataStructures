@@ -163,4 +163,23 @@ public class DoublyLinkedListWithTail<T> {
         }
         System.out.println();
     }
+    public int size(){
+        int n=0;
+        for(
+                Node<T> aux = head;
+                aux!=null;
+                aux=aux.next
+        ){n++;}
+        return n;
+    }
+
+    public Node<T> search(T key){
+        Node<T> aux=null;
+        for(
+                aux = head;
+                (aux!=null) && (!aux.key.equals(key));
+                aux=aux.next
+        );
+        return aux;
+    }
 }
