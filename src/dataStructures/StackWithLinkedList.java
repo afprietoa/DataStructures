@@ -20,4 +20,8 @@ public class StackWithLinkedList<T> {
     public void print(){
         listWithTail.print();
     }
+    public int lenght(){
+        return listWithTail.length();
+    }
+
 }

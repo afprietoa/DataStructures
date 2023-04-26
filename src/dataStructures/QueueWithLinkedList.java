@@ -19,4 +19,10 @@ public class QueueWithLinkedList<T> {
         listWithTail.print();
     }
 
+    public int lenght(){
+        return listWithTail.length();
+    }
+    public T top(){
+        return listWithTail.topFront();
+    }
 }

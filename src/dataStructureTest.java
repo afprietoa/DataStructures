@@ -1,7 +1,8 @@
-import dataStructures.DynamicArrayList;
-import dataStructures.OrderedArrayList;
-import dataStructures.SinglyLinkedListWithTail;
-import dataStructures.StaticArrayList;
+import dataStructures.*;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class dataStructureTest {
     public static void main(String[] args) {
@@ -40,7 +41,7 @@ public class dataStructureTest {
        dynamicList.pushBack(4);
        dynamicList.print();*/
 
-        OrderedArrayList<Integer> orderedList = new OrderedArrayList<Integer>(4);
+/*        OrderedArrayList<Integer> orderedList = new OrderedArrayList<Integer>(4);
         orderedList.insert(7);
         orderedList.print();
         orderedList.insert(1);
@@ -52,7 +53,8 @@ public class dataStructureTest {
         orderedList.insert(3);
         orderedList.print();
         orderedList.delete(2);
-        orderedList.print();
+        orderedList.print();*/
+
 
 
     }
