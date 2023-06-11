@@ -1,6 +1,6 @@
 package dataStructures;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class BinaryHeap<T extends Comparable<T>> {
 
@@ -151,41 +151,141 @@ public class BinaryHeap<T extends Comparable<T>> {
         }
     }
 
-    public String levelOrder() {
-        StringBuilder sb = new StringBuilder();
-        QueueWithLinkedList<Integer> queue = new QueueWithLinkedList<>();
-        queue.enqueue(1); // Start with the root index
-
-        while (!queue.empty()) {
-            int size = queue.lenght();
-            for (int i = 0; i < size; i++) {
-                int index = queue.dequeue();
-                sb.append(heapArray[index]).append(" "); // Append the current node value
-
-                int leftChild = leftChild(index);
-                int rightChild = rightChild(index);
-
-                if (leftChild <= size) {
-                    queue.enqueue(leftChild); // Enqueue left child
-                }
-
-                if (rightChild <= size) {
-                    queue.enqueue(rightChild); // Enqueue right child
-                }
-            }
-        }
-
-        return sb.toString().trim();
+    public int levelNode(int index) {
+        int level = (int) (Math.log(index + 1) / Math.log(2)) + 1;
+        return level;
     }
+
 
     public void insertLevel(T data) {
         if (size == heapArray.length - 1) {
             resizeHeap();
         }
 
-        size++;
         heapArray[size] =  data;
+        size++;
+
     }
 
+    public void ZigzagLevelOrder() {
+        if (heapArray == null || heapArray.length == 0) {
+            return;
+        }
 
+        int n = heapArray.length;
+        List<List<Integer>> levels = new ArrayList<>();
+        int level = 0;
+        int levelSize = 1;
+        int i = 0;
+
+        while (i < n) {
+            List<Integer> currentLevel = new ArrayList<>();
+            for (int j = 0; j < levelSize && i < n; j++) {
+                currentLevel.add((Integer) heapArray[i++]);
+            }
+            levels.add(currentLevel);
+            level++;
+            levelSize *= 2;
+        }
+
+        for (int j = 0; j < levels.size(); j++) {
+            if (j % 2 == 1) {
+                Collections.reverse(levels.get(j));
+            }
+        }
+
+        for (List<Integer> levelNodes : levels) {
+            for (Integer node : levelNodes) {
+                System.out.print(node + " ");
+            }
+            System.out.println();
+        }
+    }
+    public int ZigzagTraversal() {
+        Integer[] array = new Integer[getSize()];
+        int sum=0;
+
+        if (heapArray == null || heapArray.length == 0) {
+            return 0;
+        }
+
+        int n = heapArray.length;
+        List<List<Integer>> levels = new ArrayList<>();
+        int level = 0;
+        int levelSize = 1;
+        int i = 0;
+
+        while (i < n) {
+            List<Integer> currentLevel = new ArrayList<>();
+            for (int j = 0; j < levelSize && i < n; j++) {
+                currentLevel.add((Integer) heapArray[i++]);
+            }
+            levels.add(currentLevel);
+            level++;
+            levelSize *= 2;
+        }
+
+        for (int j = 0; j < levels.size(); j++) {
+            if (j % 2 == 1) {
+                Collections.reverse(levels.get(j));
+            }
+        }
+        int t=0;
+        for (int k = 0; k < levels.size(); k++) {
+            List<Integer> levelNodes = levels.get(k);
+            for (int j = 0; j < levelNodes.size(); j++) {
+                Integer node = levelNodes.get(j);
+                if(node!=null){
+                    array[t++] = node;
+                    //System.out.print(node + " ");
+                }
+
+            }
+            //System.out.println();
+        }
+
+        for (int s = 0; s < array.length; s += 2) {
+            sum += array[s];
+        }
+        return sum;
+    }
+
+    public T get(int idx){
+        return heapArray[idx];
+    }
+
+    public int sumLevelOrder(BinaryHeap<T> tree) throws Exception {
+        if (tree.isEmpty()) {
+            throw new Exception("Empty Heap");
+        } else {
+            int maxSum, currentSum, currentLevel, maxLevel,
+                    currentElement, elementLevel;
+            maxSum = currentSum=0;
+            currentLevel = 1;
+
+            maxLevel = tree.levelNode(tree.getSize());
+
+            for (int i = 0; i < tree.getSize(); i++) {
+                currentElement = (Integer) tree.get(i);
+                elementLevel = tree.levelNode(i);
+
+                if ((currentLevel + 1) == elementLevel) {
+                    if (currentSum > maxSum) {
+                        maxSum = currentSum;
+                    }
+                    currentSum = currentElement;
+                    currentLevel += 1;
+                } else if ((currentLevel == maxLevel) && (i == tree.getSize() - 1)) {
+                    currentSum += currentElement;
+                    if (currentSum > maxSum) {
+                        maxSum = currentSum;
+                    }
+                } else {
+                    currentSum += currentElement;
+                }
+            }
+
+            return maxSum;
+        }
+    }
 }
